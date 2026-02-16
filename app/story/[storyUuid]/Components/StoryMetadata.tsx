@@ -89,7 +89,7 @@ export const StoryMetadata = ({ isMobile = false }: StoryMetadataProps) => {
       display="flex"
       flexDirection="column"
       sx={{
-        height: 'calc(100dvh - 422px)',
+        height: '100%',
         overflowY: 'auto',
         borderRadius: 2,
         bgcolor: colors.background.default,

@@ -15,6 +15,7 @@ import { colors } from '@/lib/theme';
 import { SearchType } from '@/types/searchType';
 
 export const StoryContainer = ({ storyUuid }: { storyUuid: string }) => {
+  const DESKTOP_PROGRESS_BAR_HEIGHT = 60;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   const [mobileTabValue, setMobileTabValue] = useState(0);
@@ -217,8 +218,9 @@ export const StoryContainer = ({ storyUuid }: { storyUuid: string }) => {
             flexDirection: 'row',
             justifyContent: 'center',
             gap: 2,
-            height: 'calc(100dvh - 100px)',
+            height: `calc(100dvh - 100px - 60px)`,
             paddingTop: '12px',
+            paddingBottom: '12px',
             paddingX: 2,
             position: 'relative',
             overflow: 'hidden',
@@ -232,6 +234,8 @@ export const StoryContainer = ({ storyUuid }: { storyUuid: string }) => {
               display: 'flex',
               flexDirection: 'column',
               gap: 1,
+              height: '100%',
+              minHeight: 0,
               order: 1,
               transition: 'min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             }}>
@@ -248,6 +252,7 @@ export const StoryContainer = ({ storyUuid }: { storyUuid: string }) => {
               sx={{
                 flex: '1',
                 overflow: 'auto',
+                minHeight: 0,
               }}>
               <StoryMetadata />
             </Box>
@@ -257,6 +262,9 @@ export const StoryContainer = ({ storyUuid }: { storyUuid: string }) => {
             sx={{
               flex: 'none',
               width: '50%',
+              height: '100%',
+              minHeight: 0,
+              display: 'flex',
               order: 2,
               transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             }}>

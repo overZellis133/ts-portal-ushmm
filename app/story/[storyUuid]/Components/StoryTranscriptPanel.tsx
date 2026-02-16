@@ -102,10 +102,11 @@ export const StoryTranscriptPanel = ({ isMobile = false }: StoryTranscriptPanelP
         bgcolor: colors.background.default,
         borderRadius: isMobile ? 0 : 2,
         p: isMobile ? 1.5 : 2,
-        height: isMobile ? '100%' : 'auto',
+        height: '100%',
+        minHeight: 0,
       }}
       display="flex"
-      overflow="auto"
+      overflow="hidden"
       flexDirection="column"
       gap={isMobile ? 1 : 2}
       position="relative">
@@ -113,8 +114,8 @@ export const StoryTranscriptPanel = ({ isMobile = false }: StoryTranscriptPanelP
       <Box
         id="transcript-panel-content"
         sx={{
-          height: isMobile ? 'auto' : 'calc(100dvh - 266px)',
-          flex: isMobile ? 1 : 'none',
+          flex: 1,
+          minHeight: 0,
           overflowY: 'auto',
           pr: isMobile ? 0 : 1,
         }}>

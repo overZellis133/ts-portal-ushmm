@@ -141,7 +141,7 @@ export const StoryProgressBar = () => {
         bgcolor: 'background.paper',
         borderTop: '1px solid',
         borderColor: 'divider',
-        height: { xs: '60px', lg: 'auto' },
+        height: { xs: '60px', lg: '88px' },
       }}>
       <Box
         id="progress-bar-container"

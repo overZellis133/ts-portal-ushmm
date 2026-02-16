@@ -11,6 +11,7 @@ import useLayoutState from '@/app/stores/useLayout';
 import { usePathname } from 'next/navigation';
 import { colors } from '@/lib/theme';
 import { config, organizationConfig } from '@/config/organizationConfig';
+import { useSemanticSearchStore } from '@/app/stores/useSemanticSearchStore';
 
 export interface NavLink {
   name: string;
@@ -20,6 +21,7 @@ export interface NavLink {
 
 export const AppTopBar = () => {
   const { setTopBarCollapsed, isTopBarCollapsed } = useLayoutState();
+  const { collections, loadCollections } = useSemanticSearchStore();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const pathname = usePathname();
@@ -37,6 +39,14 @@ export const AppTopBar = () => {
     }
     setTopBarCollapsed(false);
   }, [isStoryPage, setTopBarCollapsed]);
+
+  useEffect(() => {
+    if (collections.length === 0) {
+      loadCollections();
+    }
+  }, [collections.length, loadCollections]);
+
+  const shouldShowCollectionsLink = collections.length > 1;
 
   const mobileDrawer = (
     <Box sx={{ width: 280, height: '100%' }}>
@@ -127,19 +137,21 @@ export const AppTopBar = () => {
                     RECORDINGS
                   </Link>
                 </Box>
-                <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                  <Link
-                    href="/collections"
-                    style={{
-                      color: config.theme.colors.primary.contrastText,
-                      textDecoration: 'none',
-                      fontSize: '12px',
-                      fontWeight: 700,
-                      letterSpacing: '0.08em',
-                    }}>
-                    COLLECTIONS
-                  </Link>
-                </Box>
+                {shouldShowCollectionsLink && (
+                  <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                    <Link
+                      href="/collections"
+                      style={{
+                        color: config.theme.colors.primary.contrastText,
+                        textDecoration: 'none',
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        letterSpacing: '0.08em',
+                      }}>
+                      COLLECTIONS
+                    </Link>
+                  </Box>
+                )}
                 <Typography
                   variant="caption"
                   color={config.theme.colors.primary.contrastText}
