@@ -30,18 +30,37 @@ export default function CollectionLayout() {
   };
 
   return (
-    <Box sx={{ height: '100vh' }} id="collection-layout-container">
+    <Box
+      sx={{
+        flex: 1,
+        minHeight: 0,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      id="collection-layout-container">
       {/* Main Layout */}
       <Box
         sx={{
           display: 'flex',
+          flex: 1,
+          minHeight: 0,
           maxWidth: '1600px',
           mx: 'auto',
           paddingX: { xs: 2, sm: 3, md: 4 },
           paddingTop: { xs: 1, md: 2 },
+          paddingBottom: { xs: 2, md: 3 },
+          width: '100%',
         }}>
         {/* Main Content */}
-        <Box sx={{ flex: 1, minWidth: 0 }} id="main-content-box">
+        <Box
+          sx={{
+            flex: 1,
+            minWidth: 0,
+            minHeight: 0,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+          id="main-content-box">
           <SearchBox viewMode={viewMode} onViewChange={handleViewChange} />
 
           {/* Active Filters Display */}
@@ -65,16 +84,11 @@ export default function CollectionLayout() {
               <>
                 <Box
                   sx={{
-                    height: {
-                      xs: 'calc(100vh - 475px)',
-                      md: '46vh',
-                    },
-                    minHeight: {
-                      xs: 'calc(100vh - 475px)',
-                      md: '46vh',
-                    },
+                    flex: { xs: 'unset', md: 1 },
+                    minHeight: { xs: 'calc(100vh - 475px)', md: 0 },
                     overflow: 'auto',
                     pr: { xs: 0, md: 1 },
+                    pb: { xs: 1, md: 2 },
                     '&::-webkit-scrollbar': {
                       width: '6px',
                     },
@@ -92,7 +106,9 @@ export default function CollectionLayout() {
                   }}>
                   {viewMode === 'list' ? <ListView /> : <GridView />}
                 </Box>
-                <Pagination />
+                <Box sx={{ mt: { xs: 1, md: 'auto' } }}>
+                  <Pagination />
+                </Box>
               </>
             )}
 

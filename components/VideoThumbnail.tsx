@@ -186,7 +186,7 @@ export const VideoThumbnail = ({
       {isInView && !thumbnailError && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          key={thumbnailRetryCount} // Force re-render en retry
+          key={`thumbnail-${thumbnailRetryCount}`}
           src={thumbnailUrl}
           alt="Video thumbnail"
           onLoad={() => setThumbnailLoaded(true)}
@@ -221,7 +221,7 @@ export const VideoThumbnail = ({
       {isHovered && !gifError && gifLoaded && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          key={gifRetryCount} // Force re-render en retry
+          key={`gif-${gifRetryCount}`} // Force re-render en retry
           src={gifUrl}
           alt="Video preview"
           style={{

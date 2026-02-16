@@ -36,7 +36,7 @@ export const Pagination = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" marginTop="auto" pt={2} pb={2}>
+    <Box display="flex" justifyContent="center" alignItems="center" pt={1.5} pb={{ xs: 1, md: 0.5 }}>
       <MuiPagination
         count={totalPages}
         page={currentPage}

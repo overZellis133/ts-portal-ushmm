@@ -37,7 +37,15 @@ export const SearchTable = () => {
 
   // --- Desktop: Grid List ---
   return (
-    <Box sx={{ mt: 2 }} id="search-list-desktop">
+    <Box
+      sx={{
+        mt: 2,
+        flex: 1,
+        minHeight: 0,
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      id="search-list-desktop">
       {/* Header */}
       <Box
         sx={{
@@ -45,7 +53,7 @@ export const SearchTable = () => {
           gridTemplateColumns: '120px 200px 200px 1fr 150px',
           alignItems: 'start',
           gap: 2,
-          p: 2,
+          p: 2.5,
           bgcolor: colors.grey[100],
           borderRadius: 1,
           fontWeight: 600,
@@ -62,14 +70,14 @@ export const SearchTable = () => {
       {/* Body scrollable */}
       <Box
         sx={{
-          height: 'calc(100vh - 320px)',
-          minHeight: '300px',
+          flex: 1,
+          minHeight: 0,
           overflow: 'auto',
           display: 'flex',
           flexDirection: 'column',
           gap: 1,
           marginTop: 1,
-          paddingBottom: 1.5,
+          paddingBottom: 2,
           '&::-webkit-scrollbar': { width: '6px' },
           '&::-webkit-scrollbar-track': {
             backgroundColor: colors.grey[100],
@@ -86,7 +94,9 @@ export const SearchTable = () => {
         ))}
       </Box>
 
-      <PaginationSearch />
+      <Box sx={{ mt: 'auto' }}>
+        <PaginationSearch />
+      </Box>
     </Box>
   );
 };

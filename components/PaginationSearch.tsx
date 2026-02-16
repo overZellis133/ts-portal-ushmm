@@ -75,7 +75,7 @@ export const PaginationSearch = () => {
   if (totalPages <= 1) return null;
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" mt={2} mb={4}>
+    <Box display="flex" justifyContent="center" alignItems="center" pt={1.5} pb={{ xs: 2, md: 0.5 }}>
       <MuiPagination
         count={totalPages}
         page={currentPage}
