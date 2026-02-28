@@ -302,6 +302,7 @@ async function processInterviewFileThroughNlp(job: InterviewImportJob): Promise<
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(30 * 60 * 1000),
   });
 
   const text = await res.text().catch(() => '');

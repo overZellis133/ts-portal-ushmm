@@ -12,6 +12,6 @@ RUN yarn install --immutable
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3002
 
-CMD ["sh", "-lc", "yarn dev -p 3000 -H 0.0.0.0"]
+CMD ["sh", "-lc", "yarn dev -p 3002 -H 0.0.0.0"]
